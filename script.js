@@ -6,8 +6,6 @@ let output = "";
 const fetchedData = () => {
   fetch(fetchesEdamameData)
     .then((response) => {
-      // console.log(`${response.ok}`);
-      // console.log(`${response.status}`);
       return response.json();
     })
     .then((json) => {
