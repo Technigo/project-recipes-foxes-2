@@ -1,19 +1,27 @@
-const recipes = document.getElementById("recipes")
-const chickenUrl = "https://api.edamam.com/search?q=chicken&app_id=18a88bfd&app_key=6b689aa35628db7e2adc1990e205bd0f&from=0&to=3&calories=591-722&health=alcohol-free"
+const recipeList = document.getElementById("recipes");
+const query = "vegetarian";
+const fetchesEdamameData = `https://api.edamam.com/search?q=${query}&app_id=18a88bfd&app_key=6b689aa35628db7e2adc1990e205bd0f&from=0&to=10`;
+let output = "";
 
-console.log(dummyData);
+const fetchedData = () => {
+  fetch(fetchesEdamameData)
+    .then((response) => {
+      // console.log(`${response.ok}`);
+      // console.log(`${response.status}`);
+      return response.json();
+    })
+    .then((json) => {
+      json.hits
+        .forEach((data) => {
+          console.log(data);
+          output += `<p class="label">${data.recipe.label}</p>`;
+          recipeList.innerHTML = output;
+        })
+        .catch((error) => {
+          recipeList.innerHTML = `<h2>Ooops, an error has occurred! Please try again later.<h2>`;
+        });
+    });
+};
+fetchedData();
 
-/* fetch(chickenUrl)
-.then((response) => {
-    console.log(`${response.ok}`);
-    console.log(`${response.status}`);
-    return response.json();
-})
-
-.then((json) => {
-    console.log(`${json}`);
-})  */
-
-const recipe = dummyData.hits[0].recipe.label
-
-recipes.innerHTML =+ `${recipe}`
+recipeList.innerHTML = output;
