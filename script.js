@@ -13,10 +13,14 @@ const fetchedData = () => {
     .then((json) => {
       json.hits
         .forEach((data) => {
-          console.log(data);
+
           output += `<p class="label">${data.recipe.label}</p>`;
+          output += `<img src="${data.recipe.image}"></img>`;
+          output += `<a href=${data.recipe.url}>See the recipe here</a>`;
+          output += `<p class="cooking-time">${data.recipe.totalTime} mins.</p>`;
           recipeList.innerHTML = output;
         })
+
         .catch((error) => {
           recipeList.innerHTML = `<h2>Ooops, an error has occurred! Please try again later.<h2>`;
         });
