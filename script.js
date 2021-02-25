@@ -14,9 +14,9 @@ const fetchedData = () => {
 
           output += `<p class="label">${data.recipe.label}</p>`;
           output += `<img src="${data.recipe.image}"></img>`;
-          output += `<a href=${data.recipe.url}>See the recipe here</a>`;
           output += `<p class="cooking-time">${data.recipe.totalTime} mins.</p>`;
           recipeList.innerHTML = output;
+          output += `<a href=${data.recipe.url}>See the recipe here</a>`;
         })
 
         .catch((error) => {
@@ -27,3 +27,5 @@ const fetchedData = () => {
 fetchedData();
 
 recipeList.innerHTML = output;
+
+
