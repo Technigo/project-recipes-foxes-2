@@ -79,10 +79,10 @@ article.recipes {
 }
 
 .footer {
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 1;
   text-align: center;
-  background: #F8BBD0;
+  background: whitesmoke;
   border: 6px solid #E91E63;
   color: #E91E63;
   margin: 6px;
